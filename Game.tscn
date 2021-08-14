@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://butt/butt outline.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="butt outline" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.603922, 0.988235, 0.8, 1 )
+position = Vector2( 550, 300 )
