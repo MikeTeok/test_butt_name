@@ -14,5 +14,3 @@ func _process(delta):
 		var note = get_node_or_null("ButtNote")
 		if note != null:
 			note.queue_free()
-	
-
