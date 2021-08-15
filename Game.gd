@@ -23,7 +23,12 @@ func add_butt_note():
 	butt_note.z_index = -1
 	butt_note_list.append(butt_note)
 	add_child(butt_note)
-
+	butt_note.connect("timeout",self,"_on_butt_timeout")
 
 func _on_Timer_timeout():
 	add_butt_note()
+
+func _on_butt_timeout():
+	var butt_note_delete = butt_note_list.pop_front()
+	if butt_note_delete != null:
+		butt_note_delete.queue_free()
