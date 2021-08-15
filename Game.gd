@@ -1,19 +1,28 @@
 extends Node2D
 
+const INTERVAL = 1.0
 onready var butt_note_scene = preload("res://butt/butt.tscn")
-
+var animation_speed
 var butt_note_list = []
 
-
 func _ready():
+	init()
 	add_butt_note()
 
 func _process(delta):
 	pass
-		
+
 func _input(delta):
 	if(Input.is_action_pressed("ui_select")):
 		delete_butt_note()
+
+func init(speed = 1.0):
+	var butt_note = butt_note_scene.instance()
+	var animation_time = butt_note.get_node("AnimationPlayer").get_animation("grow").length
+	# maybe not needed
+	butt_note.queue_free()
+	animation_speed = 1.0 * speed
+	$Timer.wait_time = animation_time * INTERVAL / speed
 
 func delete_butt_note():
 	var butt_note_delete = butt_note_list.pop_front()
@@ -22,7 +31,7 @@ func delete_butt_note():
 
 func add_butt_note():
 	var butt_note = butt_note_scene.instance()
-	butt_note.init()
+	butt_note.animation_speed = self.animation_speed
 	butt_note.global_position = $"butt outline".global_position
 	butt_note.z_index = -1
 	butt_note_list.append(butt_note)

@@ -11,6 +11,3 @@ func _ready():
 	animation.play("grow")
 	yield(animation, "animation_finished")
 	emit_signal("timeout")
-
-func init(speed = 1.0):
-	self.animation_speed = speed
