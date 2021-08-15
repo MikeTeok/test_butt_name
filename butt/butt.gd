@@ -1,8 +1,13 @@
 extends Node2D
 
+onready var animation = $AnimationPlayer
+
+signal timeout
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("grow")
-	pass # Replace with function body.
-
-
+	animation.play("grow")
+	animation.queue("fadeout")
+	yield( animation, "animation_finished" )
+	emit_signal("timeout")
+	queue_free()
