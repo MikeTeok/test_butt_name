@@ -13,9 +13,12 @@ func _process(delta):
 		
 func _input(delta):
 	if(Input.is_action_pressed("ui_select")):
-		var butt_note_delete = butt_note_list.pop_front()
-		if butt_note_delete != null:
-			butt_note_delete.queue_free()
+		delete_butt_note()
+
+func delete_butt_note():
+	var butt_note_delete = butt_note_list.pop_front()
+	if butt_note_delete != null:
+		butt_note_delete.queue_free()
 
 func add_butt_note():
 	var butt_note = butt_note_scene.instance()
@@ -29,6 +32,4 @@ func _on_Timer_timeout():
 	add_butt_note()
 
 func _on_butt_timeout():
-	var butt_note_delete = butt_note_list.pop_front()
-	if butt_note_delete != null:
-		butt_note_delete.queue_free()
+	delete_butt_note()

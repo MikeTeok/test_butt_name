@@ -11,7 +11,6 @@ modulate = Color( 0.603922, 0.988235, 0.8, 0.384314 )
 position = Vector2( 550, 300 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
