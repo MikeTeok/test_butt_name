@@ -22,6 +22,7 @@ func delete_butt_note():
 
 func add_butt_note():
 	var butt_note = butt_note_scene.instance()
+	butt_note.init()
 	butt_note.global_position = $"butt outline".global_position
 	butt_note.z_index = -1
 	butt_note_list.append(butt_note)

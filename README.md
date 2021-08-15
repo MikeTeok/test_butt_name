@@ -2,7 +2,7 @@
 Features
 - ~auto continuously creating circle~
 - ~decrease transparency to able see incoming circle~
-- customizable speed
+- ~customizable speed~
 - ~auto delete circle when it enlarge until 120%~
 - timing evaluation
 - combo
