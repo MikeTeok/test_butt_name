@@ -19,7 +19,7 @@ tracks/0/keys = {
 }
 
 [node name="ButtNote" type="Node2D"]
-modulate = Color( 0.490196, 0.854902, 1, 1 )
+modulate = Color( 0.490196, 0.854902, 1, 0.384314 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

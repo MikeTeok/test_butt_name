@@ -1,16 +1,29 @@
 extends Node2D
 
 onready var butt_note_scene = preload("res://butt/butt.tscn")
-onready var butt_note = butt_note_scene.instance()
 
-# Called when the node enters the scene tree for the first time.
+var butt_note_list = []
+
+
 func _ready():
+	add_butt_note()
+
+func _process(delta):
+	pass
+		
+func _input(delta):
+	if(Input.is_action_pressed("ui_select")):
+		var butt_note_delete = butt_note_list.pop_front()
+		if butt_note_delete != null:
+			butt_note_delete.queue_free()
+
+func add_butt_note():
+	var butt_note = butt_note_scene.instance()
 	butt_note.global_position = $"butt outline".global_position
 	butt_note.z_index = -1
+	butt_note_list.append(butt_note)
 	add_child(butt_note)
-	
-func _process(delta):
-	if(Input.is_action_pressed("ui_select")):
-		var note = get_node_or_null("ButtNote")
-		if note != null:
-			note.queue_free()
+
+
+func _on_Timer_timeout():
+	add_butt_note()
