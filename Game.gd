@@ -27,6 +27,7 @@ func init(speed = 1.0):
 func delete_butt_note():
 	var butt_note_delete = butt_note_list.pop_front()
 	if butt_note_delete != null:
+		capture_butt_note_state(butt_note_delete)
 		butt_note_delete.queue_free()
 
 func add_butt_note():
@@ -37,6 +38,9 @@ func add_butt_note():
 	butt_note_list.append(butt_note)
 	add_child(butt_note)
 	butt_note.connect("timeout",self,"_on_butt_timeout")
+
+func capture_butt_note_state(butt_note):
+	print(butt_note.state)
 
 func _on_Timer_timeout():
 	add_butt_note()

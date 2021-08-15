@@ -2,6 +2,7 @@ extends Node2D
 
 onready var animation = $AnimationPlayer
 var animation_speed
+var state
 
 signal timeout
 
