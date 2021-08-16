@@ -9,10 +9,7 @@ func _ready():
 	init()
 	add_butt_note()
 
-func _process(delta):
-	pass
-
-func _input(delta):
+func _input(_delta):
 	if(Input.is_action_just_pressed("ui_select")):
 		delete_butt_note()
 
