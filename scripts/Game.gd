@@ -4,6 +4,7 @@ const INTERVAL = 1.0
 onready var butt_note_scene = preload("res://scenes/butt.tscn")
 var animation_speed = 1.0
 var butt_note_list = []
+var combo = 0
 
 onready var theme_mode setget set_theme
 
@@ -35,7 +36,18 @@ func add_butt_note():
 	butt_note.connect("timeout",self,"_on_butt_timeout")
 
 func capture_butt_note_state(butt_note):
-	print(butt_note.state)
+	if(butt_note.state == "hit"):
+		self.combo += 1
+	else:
+		self.combo = 0
+	print_butt_note_state(butt_note.state)
+	
+func print_butt_note_state(state):
+	$UI/"Hit Label".set_text(state.to_upper())
+	if(self.combo > 1):
+		$UI/"Combo Label".set_text(String(self.combo) + "\nCOMBO")
+	else:
+		$UI/"Combo Label".set_text("")
 
 func _on_Timer_timeout():
 	add_butt_note()

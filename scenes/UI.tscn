@@ -1,0 +1,34 @@
+[gd_scene format=2]
+
+[node name="UI" type="Control"]
+margin_left = -32.0
+margin_right = 32.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Combo Label" type="Label" parent="."]
+margin_left = 8.0
+margin_right = 59.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
+text = "N
+COMBO"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hit Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 59.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
+text = "MISS"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
