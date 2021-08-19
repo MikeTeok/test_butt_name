@@ -1,21 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/ComboUI.gd" type="Script" id=1]
+[ext_resource path="res://resources/fonts/Sniglet Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 55
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "bouncy"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Combo Label:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 0.217638, 2.92817, 2.92817 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
 
 [node name="ComboUI" type="Control"]
-margin_left = -32.0
-margin_right = 32.0
-margin_bottom = 64.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Combo Label" type="Label" parent="."]
-margin_left = 8.0
-margin_right = 59.0
-margin_bottom = 31.0
-custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
+margin_right = 211.0
+margin_bottom = 115.0
+rect_pivot_offset = Vector2( 105, 57 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
 text = "N
 COMBO"
 align = 1
@@ -24,14 +45,17 @@ __meta__ = {
 }
 
 [node name="Hit Label" type="Label" parent="."]
+visible = false
 margin_left = 8.0
 margin_top = 40.0
 margin_right = 59.0
 margin_bottom = 54.0
-custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
 text = "MISS"
 align = 1
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bouncy = SubResource( 2 )

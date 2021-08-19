@@ -2,6 +2,7 @@ extends Node2D
 
 const INTERVAL = 1.0
 onready var butt_note_scene = preload("res://scenes/butt.tscn")
+onready var butt_bouncy_effect = preload("res://scenes/ButtBouncyEffect.tscn")
 var animation_speed = 1.0
 var butt_note_list = []
 
@@ -11,6 +12,7 @@ onready var theme_mode setget set_theme
 func _ready():
 	init()
 	add_butt_note()
+	$Timer.start()
 
 func _input(_delta):
 	if(Input.is_action_just_pressed("ui_select")):
@@ -24,6 +26,11 @@ func delete_butt_note():
 	var butt_note_delete = butt_note_list.pop_front()
 	if butt_note_delete != null:
 		comboUI.hitState = butt_note_delete.state
+		if butt_note_delete.state == "hit":
+			var effect = butt_bouncy_effect.instance()
+			effect.global_position = butt_note_delete.global_position
+			effect.scale = butt_note_delete.scale
+			add_child(effect)
 		butt_note_delete.queue_free()
 
 func add_butt_note():

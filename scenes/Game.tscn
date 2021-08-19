@@ -14,12 +14,11 @@ script = ExtResource( 3 )
 position = Vector2( 640, 360 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="ComboUI" parent="." instance=ExtResource( 4 )]
-margin_left = 608.0
-margin_top = 136.0
-margin_right = 672.0
-margin_bottom = 200.0
+margin_left = 934.319
+margin_top = 112.062
+margin_right = 998.319
+margin_bottom = 176.062
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
