@@ -7,12 +7,12 @@ var animation_speed = 1.0
 var butt_note_list = []
 
 onready var comboUI = $ComboUI
+onready var gameOverUI = $GameOverUI
 onready var theme_mode setget set_theme
 
 func _ready():
 	init()
-	add_butt_note()
-	$Timer.start()
+	play()
 
 func _input(_delta):
 	if(Input.is_action_just_pressed("ui_select")):
@@ -22,15 +22,33 @@ func init():
 	set_theme("Dark mode")
 	$Timer.wait_time = INTERVAL / animation_speed
 
+func play():
+	add_butt_note()
+	$Timer.start()
+
+func halt():
+	$Timer.stop()
+	clear_all_butt_notes()
+
+func clear_all_butt_notes():
+	for butt_note_delete in butt_note_list:
+		butt_note_delete.queue_free()
+	butt_note_list = []
+
 func delete_butt_note():
 	var butt_note_delete = butt_note_list.pop_front()
 	if butt_note_delete != null:
+		var combo = comboUI.combo
 		comboUI.hitState = butt_note_delete.state
 		if butt_note_delete.state == "hit":
 			var effect = butt_bouncy_effect.instance()
 			effect.global_position = butt_note_delete.global_position
 			effect.scale = butt_note_delete.scale
 			add_child(effect)
+		else: #butt_note_delete.state == "miss":
+			halt()
+			gameOverUI.update_scoreboard(combo)
+			gameOverUI.show()
 		butt_note_delete.queue_free()
 
 func add_butt_note():
@@ -47,6 +65,10 @@ func _on_Timer_timeout():
 
 func _on_butt_timeout():
 	delete_butt_note()
+	
+func _on_GameOverUI_restartRequest():
+	gameOverUI.hide()
+	play()
 
 func set_theme(new_mode):
 	theme_mode = new_mode
