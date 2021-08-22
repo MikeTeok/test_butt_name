@@ -8,6 +8,7 @@ var butt_note_list = []
 
 onready var comboUI = $ComboUI
 onready var gameOverUI = $GameOverUI
+onready var handSlapEffect = $"butt outline/HandSlapEffect"
 onready var theme_mode setget set_theme
 
 func _ready():
@@ -16,8 +17,9 @@ func _ready():
 
 func _input(_delta):
 	if(Input.is_action_just_pressed("ui_select")):
+		play_animation()
 		delete_butt_note()
-
+		
 func init():
 	set_theme("Dark mode")
 	$Timer.wait_time = INTERVAL / animation_speed
@@ -35,6 +37,9 @@ func clear_all_butt_notes():
 		butt_note_delete.queue_free()
 	butt_note_list = []
 
+func play_animation():
+	handSlapEffect.play("slap")
+	
 func delete_butt_note():
 	var butt_note_delete = butt_note_list.pop_front()
 	if butt_note_delete != null:
