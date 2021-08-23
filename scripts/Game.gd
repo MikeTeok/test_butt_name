@@ -38,6 +38,8 @@ func clear_all_butt_notes():
 	butt_note_list = []
 
 func play_animation():
+	if handSlapEffect.is_playing():
+		handSlapEffect.frame = 0
 	handSlapEffect.play("slap")
 	
 func delete_butt_note():
