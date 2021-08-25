@@ -1,7 +1,7 @@
 extends Control
 
-onready var scoreLabel = $"CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/ScoreLabel"
-onready var hiScoreLabel = $"CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/HiScoreLabel"
+onready var scoreLabel = $"CenterContainer/VBoxContainer/HBoxContainer2/ScoreLabel"
+onready var hiScoreLabel = $"CenterContainer/VBoxContainer/HBoxContainer2/HiScoreLabel"
 signal restartRequest
 
 func _ready():
