@@ -11,4 +11,4 @@ func set_theme(new_mode):
 	if theme_mode == "Light mode":
 		$Sprite.modulate = Color("ffffff")
 	elif theme_mode == "Dark mode":
-		$Sprite.modulate = Color("1A1A1A")
+		$Sprite.modulate = Color("2A2A2A")

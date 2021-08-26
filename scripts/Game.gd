@@ -21,7 +21,7 @@ func _input(_delta):
 		delete_butt_note()
 		
 func init():
-	set_theme("Dark mode")
+	set_theme("Light mode")
 	$Timer.wait_time = INTERVAL / animation_speed
 
 func play():
@@ -81,3 +81,4 @@ func set_theme(new_mode):
 	theme_mode = new_mode
 	$Background.theme_mode = new_mode
 	$"butt outline".theme_mode = new_mode
+	gameOverUI.theme_mode = new_mode
