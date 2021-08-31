@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://sprites/SlappyButtLogo.png" type="Texture" id=3]
 [ext_resource path="res://sprites/buttons/sun.png" type="Texture" id=4]
 [ext_resource path="res://sprites/buttons/play.png" type="Texture" id=5]
@@ -29,6 +30,7 @@ animations = [ {
 [node name="MainMenu" type="Control"]
 margin_right = 1277.0
 margin_bottom = 719.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,3 +65,6 @@ margin_top = -45.5
 margin_right = 119.0
 margin_bottom = 45.5
 icon_picture = SubResource( 2 )
+
+[connection signal="changeThemeRequest" from="toggle_button" to="." method="_on_toggle_button_changeThemeRequest"]
+[connection signal="pressed" from="Playbutton" to="." method="_on_Playbutton_pressed"]

@@ -7,13 +7,13 @@ var animation_speed = 1.0
 var butt_note_list = []
 
 onready var comboUI = $ComboUI
-onready var gameOverUI = $GameOverUI
 onready var handSlapEffect = $"butt outline/HandSlapEffect"
 onready var theme_mode setget set_theme
 
+signal gameOver(combo)
+
 func _ready():
-	init()
-	play()
+	pass
 
 func _input(_delta):
 	if(Input.is_action_just_pressed("ui_select")):
@@ -53,9 +53,7 @@ func delete_butt_note():
 			effect.scale = butt_note_delete.scale
 			add_child(effect)
 		else: #butt_note_delete.state == "miss":
-			halt()
-			gameOverUI.update_scoreboard(combo)
-			gameOverUI.show()
+			emit_signal("gameOver", combo)
 		butt_note_delete.queue_free()
 
 func add_butt_note():
@@ -72,12 +70,7 @@ func _on_Timer_timeout():
 
 func _on_butt_timeout():
 	delete_butt_note()
-	
-func _on_GameOverUI_restartRequest():
-	gameOverUI.hide()
-	play()
 
 func set_theme(new_mode):
 	theme_mode = new_mode
 	$"butt outline".theme_mode = new_mode
-	gameOverUI.theme_mode = new_mode

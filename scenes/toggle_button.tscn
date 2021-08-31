@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/sun.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://sprites/round_button.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://sprites/buttons/round_button.png" type="Texture" id=3]
 [ext_resource path="res://scripts/toggle_button.gd" type="Script" id=4]
-[ext_resource path="res://scenes/toggle_button_parent.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "goto_left"
@@ -34,8 +33,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 2, 0 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.32 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "change_theme_mode"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
+length = 0.7
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("clip_rect/AnimatedSprite:position")
@@ -61,16 +75,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 2 ]
 }
-
-[node name="toggle_button" type="Control"]
-margin_right = 90.0
-margin_bottom = 91.0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.32 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "change_theme_mode"
+} ]
 }
 
-[node name="toggle_button" type="TextureButton" parent="."]
+[node name="toggle_button" type="TextureButton"]
 self_modulate = Color( 0.839216, 1, 1, 1 )
 margin_right = 90.0
 margin_bottom = 91.0
@@ -83,34 +103,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="shadow" type="AnimatedSprite" parent="toggle_button"]
+[node name="shadow" type="AnimatedSprite" parent="."]
 show_behind_parent = true
 z_as_relative = false
 frames = ExtResource( 2 )
 offset = Vector2( 45, 45.5 )
 
-[node name="clip_rect" type="Control" parent="toggle_button"]
+[node name="clip_rect" type="Control" parent="."]
 margin_right = 90.0
 margin_bottom = 91.0
 rect_clip_content = true
-mouse_filter = 1
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="toggle_button/clip_rect"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="clip_rect"]
 frames = ExtResource( 1 )
 offset = Vector2( 45, 45.5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="toggle_button"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/goto_left = SubResource( 1 )
 anims/goto_right = SubResource( 2 )
 
-[connection signal="button_down" from="toggle_button" to="toggle_button" method="_on_button_button_down"]
-[connection signal="button_up" from="toggle_button" to="toggle_button" method="_on_button_button_up"]
-[connection signal="focus_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
-[connection signal="focus_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
-[connection signal="mouse_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="toggle_button" to="." method="_on_toggle_button_pressed"]
-[connection signal="animation_finished" from="toggle_button/AnimationPlayer" to="toggle_button" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_down" from="." to="." method="_on_button_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_button_mouse_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_button_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
