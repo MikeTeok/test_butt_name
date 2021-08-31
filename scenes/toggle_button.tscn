@@ -11,7 +11,7 @@ resource_name = "goto_left"
 length = 0.7
 step = 0.0166667
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/path = NodePath("clip_rect/AnimatedSprite:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -70, 0 ), Vector2( 70, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/path = NodePath("clip_rect/AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -38,7 +38,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 step = 0.0166667
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/path = NodePath("clip_rect/AnimatedSprite:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -70, 0 ), Vector2( 70, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/path = NodePath("clip_rect/AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -63,8 +63,8 @@ tracks/1/keys = {
 }
 
 [node name="toggle_button" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 90.0
+margin_bottom = 91.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -74,7 +74,6 @@ __meta__ = {
 self_modulate = Color( 0.839216, 1, 1, 1 )
 margin_right = 90.0
 margin_bottom = 91.0
-rect_clip_content = true
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 3 )
@@ -84,7 +83,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="toggle_button"]
+[node name="shadow" type="AnimatedSprite" parent="toggle_button"]
+show_behind_parent = true
+z_as_relative = false
+frames = ExtResource( 2 )
+offset = Vector2( 45, 45.5 )
+
+[node name="clip_rect" type="Control" parent="toggle_button"]
+margin_right = 90.0
+margin_bottom = 91.0
+rect_clip_content = true
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="toggle_button/clip_rect"]
 frames = ExtResource( 1 )
 offset = Vector2( 45, 45.5 )
 
@@ -92,16 +106,11 @@ offset = Vector2( 45, 45.5 )
 anims/goto_left = SubResource( 1 )
 anims/goto_right = SubResource( 2 )
 
-[node name="shadow" type="AnimatedSprite" parent="."]
-show_behind_parent = true
-z_as_relative = false
-frames = ExtResource( 2 )
-offset = Vector2( 45, 45.5 )
-
 [connection signal="button_down" from="toggle_button" to="toggle_button" method="_on_button_button_down"]
 [connection signal="button_up" from="toggle_button" to="toggle_button" method="_on_button_button_up"]
 [connection signal="focus_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
 [connection signal="focus_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
 [connection signal="mouse_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="toggle_button" to="." method="_on_toggle_button_pressed"]
 [connection signal="animation_finished" from="toggle_button/AnimationPlayer" to="toggle_button" method="_on_AnimationPlayer_animation_finished"]

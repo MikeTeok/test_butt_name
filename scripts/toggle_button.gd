@@ -1,8 +1,8 @@
 extends TextureButton
 
-onready var icon = $AnimatedSprite
+onready var icon = $clip_rect/AnimatedSprite
 onready var animation = $AnimationPlayer
-onready var shadow = get_parent().get_node("shadow")
+onready var shadow = $shadow
 onready var theme_mode = "Light mode" setget set_theme
 onready var toggle = true
 onready var icon_end_of_animation = icon_selector[!toggle][1]

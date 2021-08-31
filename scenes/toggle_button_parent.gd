@@ -1,17 +1,17 @@
 extends Control
 
 export (SpriteFrames)var icon_picture
+onready var theme_mode = "Light mode" setget set_theme
+signal changeThemeRequest(theme_mode)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	$toggle_button/AnimatedSprite.frames = icon_picture
+	$toggle_button/clip_rect/AnimatedSprite.frames = icon_picture
 
+func set_theme(new_theme):
+	$toggle_button.theme_mode = new_theme
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_toggle_button_pressed():
+	if $toggle_button.theme_mode == "Dark mode":
+		emit_signal("changeThemeRequest", "Light mode")
+	else:
+		emit_signal("changeThemeRequest", "Dark mode")
