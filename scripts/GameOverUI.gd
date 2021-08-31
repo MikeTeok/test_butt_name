@@ -31,7 +31,7 @@ func set_theme(new_theme):
 	if new_theme == "Dark mode":
 		board.modulate = Color("2A2A2A")
 	else:
-		board.modulate = Color("e1e6ec")
+		board.modulate = Color("D6FFFF")
 
 func get_save_stats():
 	return {

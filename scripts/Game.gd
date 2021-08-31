@@ -79,6 +79,5 @@ func _on_GameOverUI_restartRequest():
 
 func set_theme(new_mode):
 	theme_mode = new_mode
-	$Background.theme_mode = new_mode
 	$"butt outline".theme_mode = new_mode
 	gameOverUI.theme_mode = new_mode

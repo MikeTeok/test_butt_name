@@ -10,7 +10,7 @@
 [ext_resource path="res://sprites/buttons/button_shadow2_dark.png" type="Texture" id=8]
 [ext_resource path="res://sprites/buttons/button_shadow_dark.png" type="Texture" id=9]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
@@ -18,7 +18,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
@@ -27,7 +27,7 @@ animations = [ {
 } ]
 
 [node name="button" type="TextureButton"]
-self_modulate = Color( 0.882353, 0.901961, 0.92549, 1 )
+self_modulate = Color( 0.839216, 1, 1, 1 )
 margin_right = 238.0
 margin_bottom = 91.0
 texture_normal = ExtResource( 4 )
@@ -41,16 +41,14 @@ __meta__ = {
 
 [node name="shadow" type="AnimatedSprite" parent="."]
 show_behind_parent = true
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 offset = Vector2( 119, 45.5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 offset = Vector2( 119, 45.5 )
 
 [connection signal="button_down" from="." to="." method="_on_button_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_button_up"]
-[connection signal="focus_entered" from="." to="." method="_on_button_mouse_entered"]
-[connection signal="focus_exited" from="." to="." method="_on_button_mouse_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_button_mouse_exited"]

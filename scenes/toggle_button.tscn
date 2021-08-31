@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/sun.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://sprites/round_button.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://sprites/buttons/round_button.png" type="Texture" id=3]
+[ext_resource path="res://scripts/toggle_button.gd" type="Script" id=4]
+[ext_resource path="res://scenes/toggle_button_parent.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "goto_left"
+length = 0.7
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.316667, 0.7 ),
+"transitions": PoolRealArray( 2.2974, 0.329877, 0.297302, 3.03144 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -70, 0 ), Vector2( 70, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.316667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.316667, 0.7 ),
+"transitions": PoolRealArray( 2.2974, 0.329877, 0.392292, 2.92817 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -70, 0 ), Vector2( 70, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.316667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+
+[node name="toggle_button" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggle_button" type="TextureButton" parent="."]
+self_modulate = Color( 0.839216, 1, 1, 1 )
+margin_right = 90.0
+margin_bottom = 91.0
+rect_clip_content = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+stretch_mode = 5
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="toggle_button"]
+frames = ExtResource( 1 )
+offset = Vector2( 45, 45.5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="toggle_button"]
+anims/goto_left = SubResource( 1 )
+anims/goto_right = SubResource( 2 )
+
+[node name="shadow" type="AnimatedSprite" parent="."]
+show_behind_parent = true
+z_as_relative = false
+frames = ExtResource( 2 )
+offset = Vector2( 45, 45.5 )
+
+[connection signal="button_down" from="toggle_button" to="toggle_button" method="_on_button_button_down"]
+[connection signal="button_up" from="toggle_button" to="toggle_button" method="_on_button_button_up"]
+[connection signal="focus_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
+[connection signal="focus_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="toggle_button" to="toggle_button" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="toggle_button" to="toggle_button" method="_on_button_mouse_exited"]
+[connection signal="animation_finished" from="toggle_button/AnimationPlayer" to="toggle_button" method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sprites/SlappyButtLogo.png" type="Texture" id=3]
+[ext_resource path="res://sprites/buttons/sun.png" type="Texture" id=4]
+[ext_resource path="res://sprites/buttons/play.png" type="Texture" id=5]
+[ext_resource path="res://sprites/buttons/moon.png" type="Texture" id=6]
+[ext_resource path="res://sprites/buttons/moon_hover.png" type="Texture" id=7]
+[ext_resource path="res://sprites/buttons/sun_hover.png" type="Texture" id=9]
+[ext_resource path="res://sprites/buttons/hover_play.png" type="Texture" id=10]
+[ext_resource path="res://scenes/toggle_button.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/button.tscn" type="PackedScene" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="MainMenu" type="Control"]
+margin_right = 1277.0
+margin_bottom = 719.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toggle_button" parent="." instance=ExtResource( 11 )]
+margin_left = 521.0
+margin_top = 414.5
+margin_right = 613.0
+margin_bottom = 505.5
+rect_scale = Vector2( 0.6, 0.6 )
+icon_picture = SubResource( 1 )
+
+[node name="TitleLogo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -403.5
+margin_top = 56.0
+margin_right = 403.5
+margin_bottom = 138.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Playbutton" parent="." instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -119.0
+margin_top = -45.5
+margin_right = 119.0
+margin_bottom = 45.5
+icon_picture = SubResource( 2 )
