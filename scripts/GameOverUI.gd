@@ -6,7 +6,6 @@ onready var restart_button = $CenterContainer/VBoxContainer/HBoxContainer/Center
 onready var home_button = $CenterContainer/VBoxContainer/HBoxContainer/CenterContainer/HomeButton
 onready var board = $Board
 signal restartRequest
-signal mainMenuRequest
 onready var theme_mode = "Light mode" setget set_theme
 var best = 0
 
@@ -25,9 +24,6 @@ func update_scoreboard(score):
 func _on_RestartButton_pressed():
 	emit_signal("restartRequest")
 
-func _on_HomeButton_pressed():
-	emit_signal("mainMenuRequest")
-	
 func set_theme(new_theme):
 	theme_mode = new_theme
 	restart_button.theme_mode = new_theme

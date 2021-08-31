@@ -166,4 +166,3 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/CenterContainer2/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/CenterContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
