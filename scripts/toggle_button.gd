@@ -64,8 +64,5 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	icon.frame = icon_end_of_animation
 	icon_end_of_animation = icon_selector[!toggle][1]
 
-func change_theme_mode():
-	if theme_mode == "Dark mode":
-		emit_signal("changeThemeRequest", "Light mode")
-	else:
-		emit_signal("changeThemeRequest", "Dark mode")
+func change_theme_mode(new_theme):
+	emit_signal("changeThemeRequest", new_theme)

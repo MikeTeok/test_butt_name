@@ -19,8 +19,8 @@ func _on_MainMenu_startRequest():
 	game.show()
 	game.play()
 	
-func _on_MainMenu_changeThemeRequest(theme_mode):
-	set_theme(theme_mode)
+func _on_MainMenu_changeThemeRequest(new_theme):
+	set_theme(new_theme)
 	
 func _on_Game_gameOver(combo):
 	game.halt()

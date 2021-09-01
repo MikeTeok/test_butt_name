@@ -43,7 +43,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.32 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
+"args": [ "Light mode" ],
 "method": "change_theme_mode"
 } ]
 }
@@ -85,7 +85,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.32 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
+"args": [ "Dark mode" ],
 "method": "change_theme_mode"
 } ]
 }
@@ -119,7 +119,6 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="clip_rect"]
-position = Vector2( 2.73875, 0 )
 frames = ExtResource( 1 )
 offset = Vector2( 45, 45.5 )
 

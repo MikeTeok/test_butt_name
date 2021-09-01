@@ -17,5 +17,5 @@ func set_theme(new_theme):
 func _on_Playbutton_pressed():
 	emit_signal("startRequest")
 
-func _on_toggle_button_changeThemeRequest(_theme_mode):
-	emit_signal("changeThemeRequest", theme_mode)
+func _on_toggle_button_changeThemeRequest(new_theme):
+	emit_signal("changeThemeRequest", new_theme)

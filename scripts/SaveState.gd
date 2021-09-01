@@ -30,7 +30,7 @@ func load_game():
 	if not save_file.file_exists(save_filename):
 		return
 	
-	var saved_nodes = get_tree().get_nodes_in_group("Saved")
+#	var saved_nodes = get_tree().get_nodes_in_group("Saved")
 	
 #	for node in saved_nodes:
 #		node.queue_free()
