@@ -2,6 +2,7 @@ extends TextureButton
 
 onready var icon = $clip_rect/AnimatedSprite
 onready var animation = $AnimationPlayer
+onready var themeAnimation = $ChangeThemeAnimation
 onready var shadow = $shadow
 onready var theme_mode = "Light mode" setget set_theme
 onready var toggle = true
@@ -55,9 +56,9 @@ func set_theme(new_theme):
 	shadow.frame = shadow_selector[theme_mode][0]
 	shadow.show_behind_parent = true
 	if new_theme == "Dark mode":
-		self.self_modulate = Color("2A2A2A")
+		themeAnimation.play("change_to_dark")
 	else:
-		self.self_modulate = Color("D6FFFF")
+		themeAnimation.play("change_to_light")
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	toggle = !toggle

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/sun.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://sprites/round_button.tres" type="SpriteFrames" id=2]
@@ -90,6 +90,38 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "change_to_dark"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.839216, 1, 1, 1 ), Color( 0.164706, 0.164706, 0.164706, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "change_to_light"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.164706, 0.164706, 0.164706, 1 ), Color( 0.839216, 1, 1, 1 ) ]
+}
+
 [node name="toggle_button" type="TextureButton"]
 self_modulate = Color( 0.839216, 1, 1, 1 )
 margin_right = 90.0
@@ -125,6 +157,10 @@ offset = Vector2( 45, 45.5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/goto_left = SubResource( 1 )
 anims/goto_right = SubResource( 2 )
+
+[node name="ChangeThemeAnimation" type="AnimationPlayer" parent="."]
+anims/change_to_dark = SubResource( 3 )
+anims/change_to_light = SubResource( 4 )
 
 [connection signal="button_down" from="." to="." method="_on_button_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_button_up"]
