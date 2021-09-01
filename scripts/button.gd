@@ -2,6 +2,7 @@ extends TextureButton
 
 onready var icon = $AnimatedSprite
 onready var shadow = $shadow
+onready var animation = $ChangeThemeAnimation
 export (SpriteFrames)var icon_picture
 onready var theme_mode = "Light mode" setget set_theme
 const shadow_selector = {"Light mode": [0, 1], "Dark mode": [2, 3]}
@@ -38,8 +39,7 @@ func set_theme(new_theme):
 	shadow.frame = shadow_selector[theme_mode][0]
 	shadow.show_behind_parent = true
 	if new_theme == "Dark mode":
-		self.self_modulate = Color("2A2A2A")
+		animation.play("change_to_dark")
 	else:
-		self.self_modulate = Color("D6FFFF")
-
+		animation.play("change_to_light")
 

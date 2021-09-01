@@ -119,6 +119,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="clip_rect"]
+position = Vector2( 2.73875, 0 )
 frames = ExtResource( 1 )
 offset = Vector2( 45, 45.5 )
 
