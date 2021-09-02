@@ -10,7 +10,6 @@ onready var icon_end_of_animation = icon_selector[!toggle][1]
 const icon_selector = {true: [0, 1], false: [2, 3]}
 const shadow_selector = {"Light mode": [0, 1], "Dark mode": [2, 3]}
 export (SpriteFrames)var icon_picture
-signal changeThemeRequest(theme_mode)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,5 +64,3 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	icon.frame = icon_end_of_animation
 	icon_end_of_animation = icon_selector[!toggle][1]
 
-func change_theme_mode(new_theme):
-	emit_signal("changeThemeRequest", new_theme)

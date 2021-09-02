@@ -75,20 +75,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 2 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.32 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ "Dark mode" ],
-"method": "change_theme_mode"
-} ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "change_to_dark"

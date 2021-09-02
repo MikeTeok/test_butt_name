@@ -1,9 +1,11 @@
 extends Control
 
 onready var start_button = $Playbutton
-onready var toggle_button = $toggle_button
+onready var theme_button = $theme_button
+onready var audio_button = $audio_button
+onready var sfx_button = $sfx_button
 signal startRequest
-signal changeThemeRequest(theme_mode)
+signal changeThemeRequest
 onready var theme_mode = "Light mode" setget set_theme
 
 func _ready():
@@ -12,10 +14,12 @@ func _ready():
 func set_theme(new_theme):
 	theme_mode = new_theme
 	start_button.theme_mode = new_theme
-	toggle_button.theme_mode = new_theme
+	theme_button.theme_mode = new_theme
+	audio_button.theme_mode = new_theme
+	sfx_button.theme_mode = new_theme
 	
 func _on_Playbutton_pressed():
 	emit_signal("startRequest")
 
-func _on_toggle_button_changeThemeRequest(new_theme):
-	emit_signal("changeThemeRequest", new_theme)
+func _on_theme_button_pressed():
+	emit_signal("changeThemeRequest")

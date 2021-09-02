@@ -1,15 +1,39 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://sprites/buttons/audio_disable.png" type="Texture" id=2]
 [ext_resource path="res://sprites/SlappyButtLogo.png" type="Texture" id=3]
 [ext_resource path="res://sprites/buttons/sun.png" type="Texture" id=4]
 [ext_resource path="res://sprites/buttons/play.png" type="Texture" id=5]
 [ext_resource path="res://sprites/buttons/moon.png" type="Texture" id=6]
 [ext_resource path="res://sprites/buttons/moon_hover.png" type="Texture" id=7]
+[ext_resource path="res://sprites/buttons/audio_hover.png" type="Texture" id=8]
 [ext_resource path="res://sprites/buttons/sun_hover.png" type="Texture" id=9]
 [ext_resource path="res://sprites/buttons/hover_play.png" type="Texture" id=10]
 [ext_resource path="res://scenes/toggle_button.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/buttons/audio.png" type="Texture" id=13]
+[ext_resource path="res://sprites/buttons/audio_disable_hover.png" type="Texture" id=14]
+[ext_resource path="res://sprites/buttons/sfx_disable.png" type="Texture" id=15]
+[ext_resource path="res://sprites/buttons/sfx.png" type="Texture" id=16]
+[ext_resource path="res://sprites/buttons/sfx_disable_hover.png" type="Texture" id=17]
+[ext_resource path="res://sprites/buttons/sfx_hover.png" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,9 +43,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -34,14 +58,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="toggle_button" parent="." instance=ExtResource( 11 )]
-margin_left = 521.0
-margin_top = 414.5
-margin_right = 613.0
-margin_bottom = 505.5
-rect_scale = Vector2( 0.6, 0.6 )
-icon_picture = SubResource( 1 )
 
 [node name="TitleLogo" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -66,5 +82,29 @@ margin_right = 119.0
 margin_bottom = 45.5
 icon_picture = SubResource( 2 )
 
-[connection signal="changeThemeRequest" from="toggle_button" to="." method="_on_toggle_button_changeThemeRequest"]
+[node name="audio_button" parent="." instance=ExtResource( 11 )]
+margin_left = 600.982
+margin_top = 414.514
+margin_right = 690.982
+margin_bottom = 505.514
+rect_scale = Vector2( 0.6, 0.6 )
+icon_picture = SubResource( 3 )
+
+[node name="theme_button" parent="." instance=ExtResource( 11 )]
+margin_left = 521.0
+margin_top = 414.5
+margin_right = 613.0
+margin_bottom = 505.5
+rect_scale = Vector2( 0.6, 0.6 )
+icon_picture = SubResource( 1 )
+
+[node name="sfx_button" parent="." instance=ExtResource( 11 )]
+margin_left = 674.057
+margin_top = 414.514
+margin_right = 764.057
+margin_bottom = 505.514
+rect_scale = Vector2( 0.6, 0.6 )
+icon_picture = SubResource( 4 )
+
 [connection signal="pressed" from="Playbutton" to="." method="_on_Playbutton_pressed"]
+[connection signal="pressed" from="theme_button" to="." method="_on_theme_button_pressed"]

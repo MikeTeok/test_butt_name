@@ -5,6 +5,9 @@ onready var background = $Background
 onready var game = $Game
 onready var gameOverUI = $GameOverUI
 
+onready var theme_mode = {true: "Light mode", false: "Dark mode"}
+onready var global_theme = true
+
 func _ready():
 	pass # Replace with function body.
 
@@ -19,8 +22,9 @@ func _on_MainMenu_startRequest():
 	game.show()
 	game.play()
 	
-func _on_MainMenu_changeThemeRequest(new_theme):
-	set_theme(new_theme)
+func _on_MainMenu_changeThemeRequest():
+	global_theme = !global_theme
+	set_theme(theme_mode[global_theme])
 	
 func _on_Game_gameOver(combo):
 	game.halt()
