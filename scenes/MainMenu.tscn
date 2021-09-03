@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://sprites/buttons/audio_disable.png" type="Texture" id=2]
@@ -18,8 +18,9 @@
 [ext_resource path="res://sprites/buttons/sfx.png" type="Texture" id=16]
 [ext_resource path="res://sprites/buttons/sfx_disable_hover.png" type="Texture" id=17]
 [ext_resource path="res://sprites/buttons/sfx_hover.png" type="Texture" id=18]
+[ext_resource path="res://scenes/DifficultySlider.tscn" type="PackedScene" id=19]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 5 ) ],
 "loop": true,
@@ -29,15 +30,15 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -71,40 +72,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Playbutton" parent="." instance=ExtResource( 12 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -119.0
-margin_top = -45.5
-margin_right = 119.0
-margin_bottom = 45.5
-icon_picture = SubResource( 2 )
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="audio_button" parent="." instance=ExtResource( 11 )]
-margin_left = 600.982
-margin_top = 414.514
-margin_right = 690.982
-margin_bottom = 505.514
+[node name="Playbutton" parent="CenterContainer" instance=ExtResource( 12 )]
+margin_left = 521.0
+margin_top = 314.0
+margin_right = 759.0
+margin_bottom = 405.0
+icon_picture = SubResource( 1 )
+
+[node name="theme_button" parent="CenterContainer/Playbutton" instance=ExtResource( 11 )]
+margin_top = 100.5
+margin_right = 92.0
+margin_bottom = 191.5
 rect_scale = Vector2( 0.6, 0.6 )
 icon_picture = SubResource( 3 )
 
-[node name="theme_button" parent="." instance=ExtResource( 11 )]
-margin_left = 521.0
-margin_top = 414.5
-margin_right = 613.0
-margin_bottom = 505.5
+[node name="audio_button" parent="CenterContainer/Playbutton" instance=ExtResource( 11 )]
+margin_left = 92.0
+margin_top = 100.514
+margin_right = 330.0
+margin_bottom = 191.514
 rect_scale = Vector2( 0.6, 0.6 )
-icon_picture = SubResource( 1 )
+icon_picture = SubResource( 2 )
 
-[node name="sfx_button" parent="." instance=ExtResource( 11 )]
-margin_left = 674.057
-margin_top = 414.514
-margin_right = 764.057
-margin_bottom = 505.514
+[node name="sfx_button" parent="CenterContainer/Playbutton" instance=ExtResource( 11 )]
+margin_left = 184.0
+margin_top = 100.514
+margin_right = 274.0
+margin_bottom = 191.514
 rect_scale = Vector2( 0.6, 0.6 )
 icon_picture = SubResource( 4 )
 
-[connection signal="pressed" from="Playbutton" to="." method="_on_Playbutton_pressed"]
-[connection signal="pressed" from="theme_button" to="." method="_on_theme_button_pressed"]
+[node name="DifficultySlider" parent="CenterContainer/Playbutton" instance=ExtResource( 19 )]
+margin_top = 169.698
+margin_right = 238.0
+margin_bottom = 185.698
+
+[connection signal="pressed" from="CenterContainer/Playbutton" to="." method="_on_Playbutton_pressed"]
+[connection signal="pressed" from="CenterContainer/Playbutton/theme_button" to="." method="_on_theme_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Playbutton/audio_button" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Playbutton/sfx_button" to="." method="_on_sfx_button_pressed"]

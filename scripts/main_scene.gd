@@ -7,6 +7,8 @@ onready var gameOverUI = $GameOverUI
 
 onready var theme_mode = {true: "Light mode", false: "Dark mode"}
 onready var global_theme = true
+onready var bgm_mute = false
+onready var sfx_mute = false
 
 func _ready():
 	pass # Replace with function body.
@@ -40,3 +42,11 @@ func _on_GameOverUI_restartRequest():
 func _on_GameOverUI_mainMenuRequest():
 	gameOverUI.hide()
 	mainMenu.show()
+
+func _on_MainMenu_changeBGMRequest():
+	bgm_mute = !bgm_mute
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), bgm_mute)
+
+func _on_MainMenu_changeSFXRequest():
+	sfx_mute = !sfx_mute
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), sfx_mute)

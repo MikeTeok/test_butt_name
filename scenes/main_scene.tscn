@@ -28,7 +28,10 @@ visible = false
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+bus = "BGM"
 
+[connection signal="changeBGMRequest" from="MainMenu" to="." method="_on_MainMenu_changeBGMRequest"]
+[connection signal="changeSFXRequest" from="MainMenu" to="." method="_on_MainMenu_changeSFXRequest"]
 [connection signal="changeThemeRequest" from="MainMenu" to="." method="_on_MainMenu_changeThemeRequest"]
 [connection signal="startRequest" from="MainMenu" to="." method="_on_MainMenu_startRequest"]
 [connection signal="gameOver" from="Game" to="." method="_on_Game_gameOver"]

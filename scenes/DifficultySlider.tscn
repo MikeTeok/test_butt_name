@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/DifficultySlider.gd" type="Script" id=1]
+[ext_resource path="res://sprites/grabber_highlight.png" type="Texture" id=2]
+[ext_resource path="res://sprites/grabber.png" type="Texture" id=3]
+[ext_resource path="res://resources/fonts/Sniglet Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/fonts/Chewy.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_right = 167.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.713726, 0.87451, 0.87451, 1 )
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "number_bob"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Number:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.3 ),
+"transitions": PoolRealArray( 2.07053, 0.482968, 2.46229 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Number:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.14, 0.3 ),
+"transitions": PoolRealArray( 2.07, 0.482, 2.46 ),
+"update": 0,
+"values": [ Vector2( 240, -3 ), Vector2( 240, -15 ), Vector2( 240, -3 ) ]
+}
+
+[node name="DifficultySlider" type="HSlider"]
+margin_right = 234.0
+margin_bottom = 16.0
+custom_icons/grabber_highlight = ExtResource( 2 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+custom_styles/grabber_area_highlight = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+max_value = 9.0
+rounded = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="Label" parent="."]
+margin_left = -60.0
+margin_top = 2.0
+margin_right = -3.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
+text = "Speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="."]
+margin_left = 240.0
+margin_top = -3.0
+margin_right = 256.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0.670588, 0.670588, 1 )
+text = "1"
+align = 2
+percent_visible = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/number_bob = SubResource( 6 )
+
+[connection signal="value_changed" from="." to="." method="_on_DifficultySlider_value_changed"]
