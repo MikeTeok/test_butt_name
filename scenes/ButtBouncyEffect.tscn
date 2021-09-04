@@ -88,7 +88,7 @@ tracks/2/keys = {
 [node name="ButtBouncyEffect" type="AnimatedSprite"]
 modulate = Color( 1, 1, 1, 0 )
 frames = SubResource( 1 )
-frame = 28
+frame = 8
 playing = true
 script = ExtResource( 31 )
 

@@ -65,7 +65,7 @@ func add_butt_note():
 	var butt_note = butt_note_scene.instance()
 	butt_note.animation_speed = self.animation_speed
 	butt_note.global_position = $"butt outline".global_position
-	butt_note.z_index = -1
+	#butt_note.z_index = -1
 	butt_note_list.append(butt_note)
 	add_child(butt_note)
 	butt_note.connect("timeout",self,"_on_butt_timeout")
