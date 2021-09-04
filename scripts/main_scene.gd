@@ -66,7 +66,8 @@ func get_save_stats():
 		'parent' : get_parent().get_path(),
 		'theme_mode' : global_theme,
 		'bgm_mute' : bgm_mute,
-		'sfx_mute' : sfx_mute
+		'sfx_mute' : sfx_mute,
+		'difficulty_level' : difficulty_level
 	}
 
 func load_save_stats(stats):
