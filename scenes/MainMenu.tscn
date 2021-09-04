@@ -113,8 +113,10 @@ icon_picture = SubResource( 4 )
 margin_top = 169.698
 margin_right = 238.0
 margin_bottom = 185.698
+max_value = 4.0
 
 [connection signal="pressed" from="CenterContainer/Playbutton" to="." method="_on_Playbutton_pressed"]
 [connection signal="pressed" from="CenterContainer/Playbutton/theme_button" to="." method="_on_theme_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Playbutton/audio_button" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Playbutton/sfx_button" to="." method="_on_sfx_button_pressed"]
+[connection signal="value_changed" from="CenterContainer/Playbutton/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]

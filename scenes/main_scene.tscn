@@ -33,6 +33,7 @@ autoplay = true
 bus = "BGM"
 
 [connection signal="changeBGMRequest" from="MainMenu" to="." method="_on_MainMenu_changeBGMRequest"]
+[connection signal="changeDifficultyRequest" from="MainMenu" to="." method="_on_MainMenu_changeDifficultyRequest"]
 [connection signal="changeSFXRequest" from="MainMenu" to="." method="_on_MainMenu_changeSFXRequest"]
 [connection signal="changeThemeRequest" from="MainMenu" to="." method="_on_MainMenu_changeThemeRequest"]
 [connection signal="startRequest" from="MainMenu" to="." method="_on_MainMenu_startRequest"]

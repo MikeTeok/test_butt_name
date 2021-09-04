@@ -9,6 +9,7 @@ onready var theme_mode = {true: "Light mode", false: "Dark mode"}
 var global_theme = true
 var bgm_mute = false
 var sfx_mute = false
+var difficulty_level = 0
 
 func _ready():
 	set_theme(theme_mode[global_theme])
@@ -55,6 +56,9 @@ func _on_MainMenu_changeBGMRequest():
 func _on_MainMenu_changeSFXRequest():
 	sfx_mute = !sfx_mute
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), sfx_mute)
+
+func _on_MainMenu_changeDifficultyRequest(level):
+	game.set_difficulty(level)
 
 func get_save_stats():
 	return {

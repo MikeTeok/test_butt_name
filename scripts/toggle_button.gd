@@ -67,4 +67,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	toggle = !toggle
 	icon.frame = icon_end_of_animation
 	icon_end_of_animation = icon_selector[!toggle][1]
+	set_disabled(false)
 
+func _on_toggle_button_pressed():
+	set_disabled(true)

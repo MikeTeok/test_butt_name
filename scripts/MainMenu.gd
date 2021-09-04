@@ -9,6 +9,7 @@ signal startRequest
 signal changeThemeRequest
 signal changeBGMRequest
 signal changeSFXRequest
+signal changeDifficultyRequest(level)
 onready var theme_mode = "Light mode" setget set_theme
 
 func _ready():
@@ -33,3 +34,6 @@ func _on_audio_button_pressed():
 
 func _on_sfx_button_pressed():
 	emit_signal("changeSFXRequest")
+
+func _on_DifficultySlider_value_changed(level):
+	emit_signal("changeDifficultyRequest", level)

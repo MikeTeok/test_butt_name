@@ -1,6 +1,7 @@
 extends Node2D
 
 const INTERVAL = 1.0
+const DIFFCUILTY_FACTOR = 0.375
 onready var butt_note_scene = preload("res://scenes/butt.tscn")
 onready var butt_bouncy_effect = preload("res://scenes/ButtBouncyEffect.tscn")
 var animation_speed = 1.0
@@ -22,6 +23,10 @@ func _input(_delta):
 		
 func init():
 	set_theme("Light mode")
+	$Timer.wait_time = INTERVAL / animation_speed
+
+func set_difficulty(level):
+	self.animation_speed = 1.0 + level * DIFFCUILTY_FACTOR
 	$Timer.wait_time = INTERVAL / animation_speed
 
 func play():
