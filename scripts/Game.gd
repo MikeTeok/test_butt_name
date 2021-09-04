@@ -17,7 +17,7 @@ func _ready():
 	pass
 
 func _input(_delta):
-	if(Input.is_action_just_pressed("ui_select")):
+	if(Input.is_action_just_pressed("ui_select") and self.visible == true):
 		play_animation()
 		delete_butt_note()
 		
