@@ -27,7 +27,7 @@ func _on_button_mouse_entered():
 	shadow.show_behind_parent = true
 
 func _on_button_button_up():
-	if animation.is_playing():
+	if animation.is_playing() or not is_disabled():
 		return
 	var anim_type = "goto_right" if toggle else "goto_left"
 	animation.play(anim_type)
