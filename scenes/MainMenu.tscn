@@ -28,7 +28,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -36,7 +36,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 14 ) ],
 "loop": true,
@@ -91,7 +91,7 @@ margin_top = 100.5
 margin_right = 92.0
 margin_bottom = 191.5
 rect_scale = Vector2( 0.6, 0.6 )
-icon_picture = SubResource( 3 )
+icon_picture = SubResource( 2 )
 
 [node name="audio_button" parent="CenterContainer/Playbutton" instance=ExtResource( 11 )]
 margin_left = 92.0
@@ -99,7 +99,7 @@ margin_top = 100.514
 margin_right = 330.0
 margin_bottom = 191.514
 rect_scale = Vector2( 0.6, 0.6 )
-icon_picture = SubResource( 2 )
+icon_picture = SubResource( 3 )
 
 [node name="sfx_button" parent="CenterContainer/Playbutton" instance=ExtResource( 11 )]
 margin_left = 184.0

@@ -6,12 +6,17 @@ onready var game = $Game
 onready var gameOverUI = $GameOverUI
 
 onready var theme_mode = {true: "Light mode", false: "Dark mode"}
-onready var global_theme = true
-onready var bgm_mute = false
-onready var sfx_mute = false
+var global_theme = true
+var bgm_mute = false
+var sfx_mute = false
 
 func _ready():
-	pass # Replace with function body.
+	set_theme(theme_mode[global_theme])
+	mainMenu.get_node("CenterContainer/Playbutton/theme_button").toggle = global_theme
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), bgm_mute)
+	mainMenu.get_node("CenterContainer/Playbutton/audio_button").toggle = !bgm_mute
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), sfx_mute)
+	mainMenu.get_node("CenterContainer/Playbutton/sfx_button").toggle = !sfx_mute
 
 func set_theme(new_mode):
 	game.theme_mode = new_mode
@@ -50,3 +55,17 @@ func _on_MainMenu_changeBGMRequest():
 func _on_MainMenu_changeSFXRequest():
 	sfx_mute = !sfx_mute
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), sfx_mute)
+
+func get_save_stats():
+	return {
+		'name' : get_name(),
+		'parent' : get_parent().get_path(),
+		'theme_mode' : global_theme,
+		'bgm_mute' : bgm_mute,
+		'sfx_mute' : sfx_mute
+	}
+
+func load_save_stats(stats):
+	self.global_theme = stats.theme_mode
+	self.bgm_mute = stats.bgm_mute
+	self.sfx_mute = stats.sfx_mute

@@ -8,13 +8,16 @@ Features
 - ~combo~
 - ~scoreboard~
 - ~after game menu~
-- main menu 
-  - option to change theme
-  - option to off music and sfx
-  - play game button
-  - Game Logo/Title
-- Sound
-  - BGM
-  - SFX for boink and slap
+- ~main menu~
+  - ~option to change theme~
+  - ~option to off music and sfx~
+  - ~play game button~
+  - ~Game Logo/Title~
+- ~Sound~
+  - ~BGM~
+  - ~SFX for boink and slap~
 - FX
   - polish slap animation
+- Fix toggle_button animation glitch
+- Configurable speed
+

@@ -5,7 +5,7 @@ onready var animation = $AnimationPlayer
 onready var themeAnimation = $ChangeThemeAnimation
 onready var shadow = $shadow
 onready var theme_mode = "Light mode" setget set_theme
-onready var toggle = true
+onready var toggle = true setget set_toggle
 onready var icon_end_of_animation = icon_selector[!toggle][1]
 const icon_selector = {true: [0, 1], false: [2, 3]}
 const shadow_selector = {"Light mode": [0, 1], "Dark mode": [2, 3]}
@@ -59,6 +59,10 @@ func set_theme(new_theme):
 	else:
 		themeAnimation.play("change_to_light")
 
+func set_toggle(new_bool):
+	toggle = new_bool
+	icon.frame = icon_selector[toggle][0]
+	
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	toggle = !toggle
 	icon.frame = icon_end_of_animation

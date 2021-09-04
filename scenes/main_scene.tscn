@@ -7,7 +7,9 @@
 [ext_resource path="res://scenes/Game.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/sounds/House In a Forest Loop.ogg" type="AudioStream" id=6]
 
-[node name="main_scene" type="Control"]
+[node name="main_scene" type="Control" groups=[
+"Saved",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
