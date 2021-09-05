@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/butt outline.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://scenes/ComboUI.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 720, 400 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
@@ -18,4 +21,10 @@ margin_top = 112.062
 margin_right = 998.319
 margin_bottom = 176.062
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource( 1 )
+shape_visible = false
+visibility_mode = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]

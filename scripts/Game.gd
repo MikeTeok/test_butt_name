@@ -79,3 +79,8 @@ func _on_butt_timeout():
 func set_theme(new_mode):
 	theme_mode = new_mode
 	$"butt outline".theme_mode = new_mode
+
+
+func _on_TouchScreenButton_pressed():
+	play_animation()
+	delete_butt_note()
